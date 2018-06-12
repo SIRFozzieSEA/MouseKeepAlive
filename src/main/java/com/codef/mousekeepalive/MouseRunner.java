@@ -11,11 +11,14 @@ import java.util.logging.Logger;
 public class MouseRunner implements Runnable {
 
 	private long sleepCount = 1;
-	private static final long MAX_SLEEP_COUNT = 3600 * 9L;
+	private int refreshInterval = 0;
+	private long maxHoursRunning = 3600 * 9L;
+	
 	private static final Logger LOGGER = Logger.getLogger(MouseRunner.class.getName());
 
 	public MouseRunner(int refreshInterval, int maxHoursRunning) {
-
+		this.refreshInterval = refreshInterval;
+		this.maxHoursRunning = 3600L * maxHoursRunning;
 	}
 
 	@Override
@@ -30,10 +33,10 @@ public class MouseRunner implements Runnable {
 				robot.mouseMove(x, y);
 
 				LOGGER.log(Level.INFO, () -> "Mouse move (" + sleepCount + ")");
-				Thread.sleep(1000 * 10L);
+				Thread.sleep(1000L * refreshInterval);
 
 				sleepCount++;
-				if (sleepCount > MAX_SLEEP_COUNT) {
+				if (sleepCount > maxHoursRunning) {
 					break;
 				}
 			}
