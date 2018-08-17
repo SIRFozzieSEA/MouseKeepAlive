@@ -2,8 +2,8 @@ package com.codef.mousekeepalive;
 
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.apache.log4j.Logger;
 
 public class MouseKeepAlive {
 
@@ -35,7 +35,7 @@ public class MouseKeepAlive {
 
 		} catch (Exception e) {
 
-			LOGGER.log(Level.SEVERE, e.toString(), e);
+			LOGGER.error(e.toString(), e);
 
 		}
 

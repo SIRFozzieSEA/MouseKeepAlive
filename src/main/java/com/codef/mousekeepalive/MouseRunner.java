@@ -5,8 +5,8 @@ import java.awt.Point;
 import java.awt.PointerInfo;
 import java.awt.Robot;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.apache.log4j.Logger;
 
 public class MouseRunner implements Runnable {
 
@@ -32,7 +32,7 @@ public class MouseRunner implements Runnable {
 				int y = (int) myPoint.getY() + ThreadLocalRandom.current().nextInt(-3, 3);
 				robot.mouseMove(x, y);
 
-				LOGGER.log(Level.INFO, () -> "Mouse move (" + sleepCount + ")");
+				LOGGER.info("Mouse move (" + sleepCount + ")");
 				Thread.sleep(1000L * refreshInterval);
 
 				sleepCount++;
