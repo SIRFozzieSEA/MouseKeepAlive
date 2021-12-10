@@ -6,7 +6,8 @@ import java.awt.PointerInfo;
 import java.awt.Robot;
 import java.util.concurrent.ThreadLocalRandom;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class MouseRunner implements Runnable {
 
@@ -14,7 +15,7 @@ public class MouseRunner implements Runnable {
 	private int refreshInterval = 0;
 	private long maxHoursRunning = 3600 * 9L;
 	
-	private static final Logger LOGGER = Logger.getLogger(MouseRunner.class.getName());
+	private static final Logger LOGGER = LogManager.getLogger(MouseRunner.class.getName());
 
 	public MouseRunner(int refreshInterval, int maxHoursRunning) {
 		this.refreshInterval = refreshInterval;

@@ -3,7 +3,8 @@ package com.codef.mousekeepalive;
 import java.io.InputStream;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class MouseKeepAlive {
 
@@ -12,7 +13,7 @@ public class MouseKeepAlive {
 	private static int refreshIntervalInSeconds = 0;
 	private static int maxRunningTimeInHours = 0;
 
-	private static final Logger LOGGER = Logger.getLogger(MouseKeepAlive.class.getName());
+	private static final Logger LOGGER = LogManager.getLogger(MouseKeepAlive.class.getName());
 	
 	public static void main(String[] args) {
 		
