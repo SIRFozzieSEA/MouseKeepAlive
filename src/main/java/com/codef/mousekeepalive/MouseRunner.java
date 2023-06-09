@@ -33,7 +33,7 @@ public class MouseRunner implements Runnable {
 				int y = (int) myPoint.getY() + ThreadLocalRandom.current().nextInt(-3, 3);
 				robot.mouseMove(x, y);
 
-				LOGGER.info("Mouse move (" + sleepCount + ")");
+				LOGGER.info("Mouse move ({})", sleepCount);
 				Thread.sleep(1000L * refreshInterval);
 
 				sleepCount++;
@@ -42,9 +42,12 @@ public class MouseRunner implements Runnable {
 				}
 			}
 
-		} catch (Exception e) {
-			LOGGER.info("MouseRunner interrupted");
-		}
+	    } catch (InterruptedException e) {
+	        LOGGER.info("MouseRunner interrupted");
+	        Thread.currentThread().interrupt(); // Rethrow InterruptedException
+	    } catch (Exception e) {
+	        LOGGER.error("An error occurred", e);
+	    }
 
 	}
 
